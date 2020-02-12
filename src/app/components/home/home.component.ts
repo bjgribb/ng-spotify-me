@@ -1,7 +1,5 @@
-import { HttpClient } from "@angular/common/http";
-import { Component, OnInit, OnChanges } from "@angular/core";
-import { SpotifyService } from "src/app/services/spotify.service";
-import { ActivatedRoute, Router } from "@angular/router";
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-home",
@@ -9,19 +7,11 @@ import { ActivatedRoute, Router } from "@angular/router";
   styleUrls: ["./home.component.scss"]
 })
 export class HomeComponent implements OnInit {
-  response: any;
-  constructor(
-    private spotifyService: SpotifyService,
-    private http: HttpClient,
-    private router: Router,
-    private activatedRoute: ActivatedRoute
-  ) {}
+  token: string;
+
+  constructor(private activatedRoute: ActivatedRoute) {}
 
   ngOnInit() {
-    let token = this.activatedRoute.snapshot.queryParams["code"];
-  }
-
-  loginClick() {
-    this.spotifyService.getAuth();
+    this.token = this.activatedRoute.snapshot.queryParams["code"];
   }
 }

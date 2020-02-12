@@ -17,9 +17,10 @@ import {
   MatIconModule,
   MatCardModule
 } from "@angular/material";
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent],
+  declarations: [AppComponent, HomeComponent, LoginComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
