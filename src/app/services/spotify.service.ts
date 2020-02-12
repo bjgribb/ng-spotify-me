@@ -20,11 +20,35 @@ export class SpotifyService {
     const httpOptions = {
       params: new HttpParams()
         .set("client_id", this.clientId)
-        .set("response_type", "code")
+        .set("response_type", "token")
         .set("redirect_uri", "http://localhost:4200/callback/")
-        .set("scope", "user-read-private, user-read-email")
+        .set(
+          "scope",
+          "user-read-private, user-read-email, playlist-read-private, playlist-read-collaborative"
+        )
     };
 
+    // const httpOptions = {
+    //   params: {
+    //     client_id: this.clientId,
+    //     response_type: "token",
+    //     redirect_uri: "http://localhost:4200/callback/",
+    //     scope:
+    //       "user-read-private, user-read-email, playlist-read-private, playlist-read-collaborative"
+    //   }
+    // };
+    // return this.http.get(baseURL, httpOptions);
+
     return location.replace(`${baseURL}?${httpOptions.params.toString()}`);
+  }
+
+  getUserPlaylists(token) {
+    const httpOptions = {
+      headers: { Authorization: `Bearer ${token}` }
+    };
+
+    const basePlaylistURL = "https://api.spotify.com/v1/me/playlists";
+
+    return this.http.get(basePlaylistURL, httpOptions);
   }
 }
