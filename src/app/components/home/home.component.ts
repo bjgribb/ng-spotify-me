@@ -1,7 +1,7 @@
-import { SpotifyService } from "src/app/services/spotify.service";
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
+import { ActivatedRoute } from "@angular/router";
 import { map } from "rxjs/operators";
+import { SpotifyService } from "src/app/services/spotify.service";
 
 @Component({
   selector: "app-home",
@@ -9,11 +9,11 @@ import { map } from "rxjs/operators";
   styleUrls: ["./home.component.scss"]
 })
 export class HomeComponent implements OnInit {
-  token = "";
+  token: string;
+  playlists: any;
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private router: Router,
     private spotifyService: SpotifyService
   ) {}
 
@@ -31,8 +31,8 @@ export class HomeComponent implements OnInit {
   }
 
   getPlaylistsClick() {
-    this.spotifyService
-      .getUserPlaylists(this.token)
-      .subscribe(res => console.log(res));
+    this.spotifyService.getUserPlaylists(this.token).subscribe(playlist => {
+      this.playlists = playlist.items;
+    });
   }
 }

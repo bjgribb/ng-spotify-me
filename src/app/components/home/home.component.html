@@ -3,3 +3,7 @@
 </button>
 
 <p>Here's your token: {{ token }}</p>
+
+<mat-card *ngFor="let playlist of playlists"
+  ><mat-card-title>{{ playlist.name }}</mat-card-title></mat-card
+>
