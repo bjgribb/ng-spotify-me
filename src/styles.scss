@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
-
+@import "@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "~bootstrap/dist/css/bootstrap.min.css";
 
 html,
 body {
@@ -8,6 +8,6 @@ body {
 }
 
 body {
-  margin: 0;
+  margin: 0.5rem;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
