@@ -1,5 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
+import { Subscription } from "rxjs";
 import { map } from "rxjs/operators";
 import { SpotifyService } from "src/app/services/spotify.service";
 
@@ -8,9 +9,10 @@ import { SpotifyService } from "src/app/services/spotify.service";
   templateUrl: "./home.component.html",
   styleUrls: ["./home.component.scss"]
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   token: string;
   playlists: any;
+  routeQueryParams$: Subscription;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -29,7 +31,7 @@ export class HomeComponent implements OnInit {
       .subscribe(res => {
         this.token = res.access_token;
         if (!this.token) {
-          this.router.navigate(["login"]);
+          this.router.navigate(["home/dialog"]);
         }
       });
   }

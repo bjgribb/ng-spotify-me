@@ -1,3 +1,4 @@
+import { DialogLoginComponent } from "./components/dialog-login/dialog-login.component";
 import { LoginComponent } from "./components/login/login.component";
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
@@ -6,7 +7,7 @@ import { HomeComponent } from "./components/home/home.component";
 const routes: Routes = [
   {
     path: "",
-    redirectTo: "login",
+    redirectTo: "home",
     pathMatch: "full"
   },
   {
@@ -15,7 +16,13 @@ const routes: Routes = [
   },
   {
     path: "home",
-    component: HomeComponent
+    component: HomeComponent,
+    children: [
+      {
+        path: "dialog",
+        component: DialogLoginComponent
+      }
+    ]
   },
   {
     path: "callback",

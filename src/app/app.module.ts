@@ -1,3 +1,4 @@
+import { MatDialogModule } from "@angular/material/dialog";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 
@@ -17,10 +18,11 @@ import {
   MatIconModule,
   MatCardModule
 } from "@angular/material";
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from "./components/login/login.component";
+import { DialogLoginComponent } from './components/dialog-login/dialog-login.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, LoginComponent],
+  declarations: [AppComponent, HomeComponent, LoginComponent, DialogLoginComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -31,7 +33,8 @@ import { LoginComponent } from './components/login/login.component';
     MatMenuModule,
     MatToolbarModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
