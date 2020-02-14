@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { map } from "rxjs/operators";
 import { SpotifyService } from "src/app/services/spotify.service";
 
@@ -14,7 +14,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private spotifyService: SpotifyService
+    private spotifyService: SpotifyService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -27,6 +28,9 @@ export class HomeComponent implements OnInit {
       )
       .subscribe(res => {
         this.token = res.access_token;
+        if (!this.token) {
+          this.router.navigate(["login"]);
+        }
       });
   }
 
