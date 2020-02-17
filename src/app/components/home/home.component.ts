@@ -9,7 +9,7 @@ import { SpotifyService } from "src/app/services/spotify.service";
   templateUrl: "./home.component.html",
   styleUrls: ["./home.component.scss"]
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit {
   token: string;
   playlists: any;
   routeQueryParams$: Subscription;
