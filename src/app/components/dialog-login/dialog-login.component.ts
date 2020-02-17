@@ -1,9 +1,9 @@
-import { Component } from "@angular/core";
-import { MatDialog } from "@angular/material";
-import { LoginComponent } from "./../login/login.component";
+import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import { LoginComponent } from './../login/login.component';
 
 @Component({
-  template: ""
+  template: ''
 })
 export class DialogLoginComponent {
   constructor(public dialog: MatDialog) {
@@ -11,8 +11,8 @@ export class DialogLoginComponent {
   }
   openDialog(): void {
     const dialogRef = this.dialog.open(LoginComponent, {
-      width: "250px",
-      height: "250px"
+      width: '250px',
+      height: '250px'
     });
   }
 }
